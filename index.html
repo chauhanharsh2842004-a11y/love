@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Important Question ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: white;
+}
+
+.container {
+  position: relative;
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+.love-img {
+  width: 220px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  transition: 0.3s ease;
+}
+
+button {
+  padding: 12px 30px;
+  margin: 10px;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.yes {
+  background: #00ff88;
+  color: black;
+}
+
+.no {
+  background: #ff4d4d;
+  color: white;
+  position: relative;
+}
+
+.celebrate {
+  font-size: 28px;
+  animation: pop 0.5s ease infinite alternate;
+}
+
+@keyframes pop {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1 id="question">Do you love me? ❤️</h1>
+
+  <img src="/Users/harshchauhan/Desktop/mini/love/tkthao219-bubududu (1).gif" id="loveImage" class="love-img">
+
+  <button class="yes" onclick="yesClick()">Yes 😍</button>
+  <button class="no" id="noBtn" onclick="noClick()">No 😢</button>
+</div>
+
+<script>
+let noCount = 0;
+let moveCount = 0;
+
+function noClick() {
+  noCount++;
+  const question = document.getElementById("question");
+  const btn = document.getElementById("noBtn");
+  const image = document.getElementById("loveImage");
+
+  if(noCount == 1) {
+    question.innerText = "Are you sure? 😭";
+    image.src = "/Users/harshchauhan/Desktop/mini/love/15-1.png";
+  }
+  else if(noCount == 2) {
+    question.innerText = "Think again… 😏";
+    image.src = "/Users/harshchauhan/Desktop/mini/love/tkthao219-bubududu (2).gif";
+  }
+  else if(noCount >= 3) {
+    question.innerText = "You can't escape 😌";
+    image.src = "/Users/harshchauhan/Desktop/mini/love/C5448D5A-C297-4121-8169-F55EC3BBF1B0.JPG";
+
+    if(moveCount < 4) {
+      const maxX = window.innerWidth - 150;
+      const maxY = window.innerHeight - 100;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      btn.style.position = "absolute";
+      btn.style.left = randomX + "px";
+      btn.style.top = randomY + "px";
+
+      moveCount++;
+    }
+  }
+}
+
+function yesClick() {
+  document.querySelector(".container").innerHTML =
+    "<div class='celebrate'>I KNEW ITTT ❤️😍<br><br>Love you forever 💞<br><br>" +
+    "<img src='/Users/harshchauhan/Desktop/mini/love/tkthao219-bubududu.gif' class='love-img'></div>";
+}
+</script>
+
+</body>
+</html>
